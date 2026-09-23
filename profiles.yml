@@ -1,0 +1,12 @@
+pulsemetrics:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DBT_HOST', 'localhost') }}"
+      port: "{{ env_var('DBT_PORT', '5432') | int }}"
+      user: "{{ env_var('DBT_USER', 'pulse') }}"
+      password: "{{ env_var('DBT_PASSWORD', 'pulse_local') }}"
+      dbname: "{{ env_var('DBT_DBNAME', 'pulsemetrics') }}"
+      schema: "{{ env_var('DBT_SCHEMA', 'analytics') }}"
+      threads: 4

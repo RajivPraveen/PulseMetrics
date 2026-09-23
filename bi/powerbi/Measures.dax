@@ -1,0 +1,11 @@
+-- Connect Power BI to analytics.mart_monthly_kpis and mark month_start as a date.
+MRR = SUM(mart_monthly_kpis[mrr])
+ARR = [MRR] * 12
+Paid Customers = SUM(mart_monthly_kpis[paid_customers])
+New MRR = SUM(mart_monthly_kpis[new_mrr])
+Expansion MRR = SUM(mart_monthly_kpis[expansion_mrr])
+Churned MRR = SUM(mart_monthly_kpis[churned_mrr])
+CAC = DIVIDE(SUM(mart_monthly_kpis[marketing_spend]), SUM(mart_monthly_kpis[new_paid_customers]))
+Logo Churn = DIVIDE(SUM(mart_monthly_kpis[churned_customers]), CALCULATE(SUM(mart_monthly_kpis[paid_customers]), DATEADD('Calendar'[Date], -1, MONTH)))
+Trial to Paid = DIVIDE(SUM(mart_monthly_kpis[paid_30d]), SUM(mart_monthly_kpis[trials]))
+Activation Rate = DIVIDE(SUM(mart_monthly_kpis[activated]), SUM(mart_monthly_kpis[trials]))

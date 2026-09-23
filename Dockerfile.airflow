@@ -1,0 +1,10 @@
+FROM apache/airflow:2.10.5-python3.12
+USER root
+RUN mkdir -p /opt/airflow/metadata && chown airflow:root /opt/airflow/metadata
+USER airflow
+WORKDIR /opt/airflow/pulsemetrics
+COPY --chown=airflow:root pyproject.toml README.md ./
+COPY --chown=airflow:root src ./src
+RUN python -m venv .venv && .venv/bin/pip install --no-cache-dir . && .venv/bin/pip check
+COPY --chown=airflow:root . .
+ENV PYTHONPATH=/opt/airflow/pulsemetrics/src DBT_PROFILES_DIR=/opt/airflow/pulsemetrics

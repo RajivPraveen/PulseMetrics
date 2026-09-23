@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img" aria-label="PulseMetrics analytics platform">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#091225"/>
+      <stop offset="1" stop-color="#162746"/>
+    </linearGradient>
+    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4de1d2"/>
+      <stop offset="1" stop-color="#a58bff"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
+  </defs>
+  <rect width="1400" height="420" rx="28" fill="url(#bg)"/>
+  <circle cx="1160" cy="180" r="155" fill="#4de1d2" opacity=".10" filter="url(#glow)"/>
+  <circle cx="1280" cy="80" r="100" fill="#a58bff" opacity=".11" filter="url(#glow)"/>
+  <g opacity=".23" stroke="#3a5678" stroke-width="1">
+    <path d="M760 94H1350M760 154H1350M760 214H1350M760 274H1350M760 334H1350"/>
+    <path d="M820 65V350M930 65V350M1040 65V350M1150 65V350M1260 65V350"/>
+  </g>
+  <path d="M760 278L840 251L920 265L1000 189L1080 212L1160 138L1240 157L1350 78" fill="none" stroke="#4de1d2" stroke-width="20" opacity=".10" filter="url(#glow)"/>
+  <path d="M760 278L840 251L920 265L1000 189L1080 212L1160 138L1240 157L1350 78" fill="none" stroke="url(#wave)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <g fill="#4de1d2">
+    <circle cx="840" cy="251" r="7"/><circle cx="1000" cy="189" r="7"/><circle cx="1160" cy="138" r="7"/><circle cx="1350" cy="78" r="7"/>
+  </g>
+  <rect x="84" y="76" width="52" height="52" rx="15" fill="#4de1d2"/>
+  <path d="M96 102h7l6-11 7 23 6-12h6" fill="none" stroke="#091225" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="157" y="115" fill="#eef6ff" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" letter-spacing="1">PULSEMETRICS</text>
+  <text x="84" y="216" fill="#f6f9ff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">See the whole SaaS story.</text>
+  <text x="86" y="266" fill="#a9bad3" font-family="Arial, Helvetica, sans-serif" font-size="23">Revenue · acquisition · engagement · retention · experiments</text>
+  <rect x="84" y="316" width="220" height="42" rx="21" fill="#1f3b53" stroke="#4de1d2" stroke-width="1.5"/>
+  <text x="194" y="344" text-anchor="middle" fill="#79f0e2" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">LOCAL-FIRST ANALYTICS</text>
+</svg>

@@ -1,0 +1,38 @@
+[project]
+name = "pulsemetrics"
+version = "0.1.0"
+description = "Local-first SaaS product, revenue, and customer analytics platform"
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=1.26,<3",
+  "scipy>=1.13,<2",
+  "statsmodels>=0.14,<1",
+  "psycopg[binary]>=3.2,<4",
+  "dbt-postgres>=1.9,<2",
+  "python-dotenv>=1,<2",
+]
+
+[project.optional-dependencies]
+dashboard = [
+  "pandas>=2.2,<3",
+  "SQLAlchemy>=1.4,<3",
+  "streamlit>=1.45,<2",
+  "plotly>=6,<7",
+]
+docs = ["matplotlib>=3.9,<4"]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
+
+[project.scripts]
+pulse-generate = "pulsemetrics.generate:main"
+pulse-ingest = "pulsemetrics.ingest:main"
+pulse-experiments = "pulsemetrics.experiments:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

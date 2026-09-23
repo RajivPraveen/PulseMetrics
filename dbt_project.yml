@@ -1,0 +1,11 @@
+name: pulsemetrics
+version: '1.0.0'
+config-version: 2
+profile: pulsemetrics
+model-paths: ["models"]
+models:
+  pulsemetrics:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

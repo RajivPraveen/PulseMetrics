@@ -1,0 +1,50 @@
+version: 2
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: customers
+        loaded_at_field: source_updated_at
+        freshness:
+          warn_after: {count: 35, period: day}
+          error_after: {count: 45, period: day}
+        columns:
+          - name: customer_id
+            tests: [unique, not_null]
+          - name: experiment_variant
+            tests:
+              - accepted_values:
+                  arguments:
+                    values: ['control', 'treatment']
+      - name: web_visits
+      - name: subscription_periods
+        columns:
+          - name: period_id
+            tests: [unique, not_null]
+          - name: customer_id
+            tests:
+              - relationships:
+                  arguments:
+                    to: source('raw', 'customers')
+                    field: customer_id
+      - name: invoices
+      - name: product_events
+        loaded_at_field: source_updated_at
+        freshness:
+          warn_after: {count: 35, period: day}
+          error_after: {count: 45, period: day}
+        columns:
+          - name: event_id
+            tests: [unique, not_null]
+          - name: customer_id
+            tests:
+              - relationships:
+                  arguments:
+                    to: source('raw', 'customers')
+                    field: customer_id
+      - name: marketing_spend
+        loaded_at_field: source_updated_at
+        freshness:
+          warn_after: {count: 35, period: day}
+          error_after: {count: 45, period: day}
+      - name: support_tickets

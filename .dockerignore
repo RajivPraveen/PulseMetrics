@@ -1,0 +1,12 @@
+.venv
+.git
+.env
+data/generated
+target
+dbt_packages
+logs
+__pycache__
+*.egg-info
+.pytest_cache
+.ruff_cache
+.user.yml

@@ -1,0 +1,38 @@
+version: 2
+models:
+  - name: dim_customer
+    description: One row per customer with first activation and paid dates.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+  - name: fct_customer_month
+    description: One customer per calendar month since signup; MRR is end-of-month run rate.
+    tests:
+      - unique:
+          arguments:
+            column_name: "customer_id || '-' || month_start"
+    columns:
+      - name: customer_id
+        tests: [not_null]
+      - name: month_start
+        tests: [not_null]
+  - name: mart_monthly_kpis
+    columns:
+      - name: month_start
+        tests: [unique, not_null]
+  - name: mart_funnel_monthly
+    columns:
+      - name: month_start
+        tests: [unique, not_null]
+  - name: mart_cohort_retention
+    columns:
+      - name: retention_rate
+        tests: [not_null]
+  - name: mart_engagement_daily
+    columns:
+      - name: activity_date
+        tests: [unique, not_null]
+  - name: mart_acquisition_channel_month
+    columns:
+      - name: month_start
+        tests: [not_null]
