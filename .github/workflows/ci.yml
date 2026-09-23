@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: pulse
+          POSTGRES_PASSWORD: pulse_local
+          POSTGRES_DB: pulsemetrics
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U pulse -d pulsemetrics"
+          --health-interval 5s --health-timeout 5s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://pulse:pulse_local@localhost:5432/pulsemetrics
+      DBT_HOST: localhost
+      DBT_PORT: 5432
+      DBT_USER: pulse
+      DBT_PASSWORD: pulse_local
+      DBT_DBNAME: pulsemetrics
+      DBT_SCHEMA: analytics
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -e '.[dashboard,dev]'
+      - run: ruff check src tests dashboard dags scripts
+      - run: pytest -q
+      - run: python -m pulsemetrics.generate --customers 300
+      - run: python -m pulsemetrics.ingest
+      - run: dbt run --profiles-dir .
+      - run: dbt test --profiles-dir .
+      - run: dbt source freshness --profiles-dir .
+      - run: python -m pulsemetrics.experiments
