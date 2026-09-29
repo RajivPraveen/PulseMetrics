@@ -16,6 +16,7 @@
   <a href="#the-dashboard">The dashboard</a> ·
   <a href="#kpis-on-the-dashboard">KPIs</a> ·
   <a href="#how-it-works">How it works</a> ·
+  <a href="#data-checks">Data checks</a> ·
   <a href="#run-it-locally">Run it</a> ·
   <a href="#for-technical-reviewers">Technical details</a>
 </p>
@@ -193,13 +194,45 @@ flowchart LR
    failed import can be retried safely.
 2. **Organise.** dbt builds clean reporting tables with one agreed definition of every metric (a customer
    table, a customer-by-month revenue table, and tables for each dashboard page).
-3. **Check.** Automatic tests catch broken data before it reaches the dashboard, e.g. subscriptions that overlap,
-   a funnel where later steps outnumber earlier ones, negative revenue, or revenue that doesn't add up.
+3. **Check.** 26 automatic tests catch broken data and stop the refresh, e.g. subscriptions that
+   overlap, a funnel where later steps outnumber earlier ones, negative revenue, or revenue that doesn't add up
+   (full list in [Data checks](#data-checks)).
 4. **Analyse.** The experiment engine runs the statistics for the onboarding test.
 5. **Show.** The dashboard reads the finished tables; it doesn't recalculate anything in the browser. The same
    tables can feed Power BI or Tableau.
 
 Airflow runs the whole refresh every morning and can post an alert if it fails.
+
+---
+
+## Data checks
+
+Every refresh runs **26 automatic dbt tests and 3 freshness checks**. If any test fails, the refresh stops and is
+marked as failed: the experiment isn't recalculated, Airflow retries twice, and it can post an alert to a
+webhook. (The tests run right after dbt rebuilds the tables, so a failure flags the new numbers rather than
+holding them back.)
+
+| Check | What it catches | Tests |
+|---|---|---|
+| **No duplicates** | The same customer, subscription, product event, month or day counted twice (customer-by-month revenue is checked for one row per customer per month) | 8 |
+| **No blanks** | Missing IDs, months, dates or retention rates | 11 |
+| **Records link up** | A subscription or product event that belongs to a customer who doesn't exist | 2 |
+| **Allowed values only** | A customer in an experiment group other than `control` or `treatment` | 1 |
+| **No overlapping subscriptions** | One customer with two subscriptions active at once, which would count their revenue twice | 1 |
+| **Funnel in order** | A later funnel step with more people than an earlier one (e.g. more trials than signups) | 1 |
+| **No negative numbers** | Negative revenue, revenue changes, customer counts or marketing spend | 1 |
+| **Revenue adds up** | Dashboard monthly revenue that doesn't exactly equal the sum of every customer's revenue that month | 1 |
+| **Data is recent** | Customers, product events or marketing spend not updated recently: a warning after 35 days, a failure after 45 | 3 freshness checks |
+
+Before dbt runs, the loader also checks that all 7 sources loaded and none is more than 48 hours old; if not,
+the refresh stops there.
+
+**Not yet covered:** website visits, invoices and support tickets have no tests, and invoices and support
+tickets have no freshness check.
+
+The tests live in [`models/marts/schema.yml`](models/marts/schema.yml),
+[`models/staging/sources.yml`](models/staging/sources.yml) and [`tests/`](tests/). Run them with
+`dbt test --profiles-dir .` and `dbt source freshness --profiles-dir .`.
 
 ---
 
