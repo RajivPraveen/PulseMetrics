@@ -19,7 +19,7 @@ dashboard = [
   "streamlit>=1.45,<2",
   "plotly>=6,<7",
 ]
-docs = ["matplotlib>=3.9,<4"]
+docs = ["playwright>=1.45,<2"]
 dev = ["pytest>=8,<10", "ruff>=0.11,<1"]
 
 [project.scripts]

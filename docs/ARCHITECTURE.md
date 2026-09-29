@@ -34,7 +34,7 @@ flowchart LR
 - `control`: one ingestion watermark and run timestamp per source.
 - `analytics`: dbt dimensions, facts, marts, and stored experiment results.
 
-The source exports live under `data/generated/` by default and are ignored by Git. In Docker, that directory is mounted into refresh and Airflow containers. The committed preview images under `assets/previews/` are a sample snapshot produced from the reporting marts.
+The source exports live under `data/generated/` by default and are ignored by Git. In Docker, that directory is mounted into refresh and Airflow containers. The committed preview images under `assets/previews/` are screenshots of the dashboard after a demo refresh, captured by `scripts/generate_readme_assets.py`.
 
 ## Local scope
 

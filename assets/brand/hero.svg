@@ -1,32 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="420" viewBox="0 0 1400 420" role="img" aria-label="PulseMetrics analytics platform">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#091225"/>
-      <stop offset="1" stop-color="#162746"/>
-    </linearGradient>
-    <linearGradient id="wave" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#4de1d2"/>
-      <stop offset="1" stop-color="#a58bff"/>
-    </linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="22"/></filter>
-  </defs>
-  <rect width="1400" height="420" rx="28" fill="url(#bg)"/>
-  <circle cx="1160" cy="180" r="155" fill="#4de1d2" opacity=".10" filter="url(#glow)"/>
-  <circle cx="1280" cy="80" r="100" fill="#a58bff" opacity=".11" filter="url(#glow)"/>
-  <g opacity=".23" stroke="#3a5678" stroke-width="1">
-    <path d="M760 94H1350M760 154H1350M760 214H1350M760 274H1350M760 334H1350"/>
-    <path d="M820 65V350M930 65V350M1040 65V350M1150 65V350M1260 65V350"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="400" viewBox="0 0 1400 400" role="img" aria-label="PulseMetrics: the scoreboard for a subscription software business. Monthly recurring revenue grew from $0 to $50.9K between 2025-01 and 2026-08.">
+  <rect x="0.5" y="0.5" width="1399" height="399" rx="20" fill="#f6f7f8" stroke="#e4e7ea"/>
+  <g stroke="#e4e7ea" stroke-width="1"><path d="M780 330H1340M780 250H1340M780 170H1340"/></g>
+  <path d="M780.0,330.0 L809.5,328.3 L838.9,322.6 L868.4,314.4 L897.9,302.6 L927.4,294.3 L956.8,285.3 L986.3,272.3 L1015.8,260.9 L1045.3,252.1 L1074.7,238.8 L1104.2,229.9 L1133.7,214.4 L1163.2,199.3 L1192.6,186.5 L1222.1,168.9 L1251.6,156.2 L1281.1,135.9 L1310.5,118.0 L1340.0,107.8 L1340.0,330 L780.0,330 Z" fill="#3b6ea8" fill-opacity="0.10"/>
+  <path d="M780.0,330.0 L809.5,328.3 L838.9,322.6 L868.4,314.4 L897.9,302.6 L927.4,294.3 L956.8,285.3 L986.3,272.3 L1015.8,260.9 L1045.3,252.1 L1074.7,238.8 L1104.2,229.9 L1133.7,214.4 L1163.2,199.3 L1192.6,186.5 L1222.1,168.9 L1251.6,156.2 L1281.1,135.9 L1310.5,118.0 L1340.0,107.8" fill="none" stroke="#3b6ea8" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="1340.0" cy="107.8" r="6" fill="#3b6ea8" stroke="#f6f7f8" stroke-width="3"/>
+  <g font-family="Inter,system-ui,-apple-system,Segoe UI,sans-serif">
+    <text x="1328.0" y="91.8" fill="#172026" font-size="15" font-weight="600" text-anchor="end">$50.9K a month</text>
+    <text x="780" y="356" fill="#8a939b" font-size="13">2025-01</text>
+    <text x="1340" y="356" fill="#8a939b" font-size="13" text-anchor="end">2026-08</text>
+    <text x="780" y="70" fill="#8a939b" font-size="13">Monthly recurring revenue (demo data)</text>
+    <text x="64" y="112" fill="#0f766e" font-size="14" font-weight="600" letter-spacing="3">SUBSCRIPTION BUSINESS ANALYTICS</text>
+    <text x="62" y="176" fill="#172026" font-size="60" font-weight="700" letter-spacing="-1">PulseMetrics</text>
+    <text x="64" y="222" fill="#4a555e" font-size="22">The scoreboard for a subscription software</text>
+    <text x="64" y="252" fill="#4a555e" font-size="22">business: revenue, new customers, usage,</text>
+    <text x="64" y="282" fill="#4a555e" font-size="22">who stays, and whether product changes work.</text>
   </g>
-  <path d="M760 278L840 251L920 265L1000 189L1080 212L1160 138L1240 157L1350 78" fill="none" stroke="#4de1d2" stroke-width="20" opacity=".10" filter="url(#glow)"/>
-  <path d="M760 278L840 251L920 265L1000 189L1080 212L1160 138L1240 157L1350 78" fill="none" stroke="url(#wave)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  <g fill="#4de1d2">
-    <circle cx="840" cy="251" r="7"/><circle cx="1000" cy="189" r="7"/><circle cx="1160" cy="138" r="7"/><circle cx="1350" cy="78" r="7"/>
-  </g>
-  <rect x="84" y="76" width="52" height="52" rx="15" fill="#4de1d2"/>
-  <path d="M96 102h7l6-11 7 23 6-12h6" fill="none" stroke="#091225" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-  <text x="157" y="115" fill="#eef6ff" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700" letter-spacing="1">PULSEMETRICS</text>
-  <text x="84" y="216" fill="#f6f9ff" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">See the whole SaaS story.</text>
-  <text x="86" y="266" fill="#a9bad3" font-family="Arial, Helvetica, sans-serif" font-size="23">Revenue · acquisition · engagement · retention · experiments</text>
-  <rect x="84" y="316" width="220" height="42" rx="21" fill="#1f3b53" stroke="#4de1d2" stroke-width="1.5"/>
-  <text x="194" y="344" text-anchor="middle" fill="#79f0e2" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700">LOCAL-FIRST ANALYTICS</text>
 </svg>

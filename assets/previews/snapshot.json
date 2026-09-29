@@ -1,5 +1,11 @@
 {
-  "generated_from": "PostgreSQL analytics marts",
-  "reporting_month": "2026-08-01",
-  "experiment": "onboarding_redesign_v1"
+  "generated_from": "screenshots of the running dashboard",
+  "captured_at": "2026-09-29T23:41:51+00:00",
+  "pages": [
+    "Business overview",
+    "Getting customers",
+    "Product usage",
+    "Keeping customers",
+    "Onboarding test"
+  ]
 }
